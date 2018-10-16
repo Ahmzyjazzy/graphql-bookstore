@@ -13,7 +13,7 @@ class BookDetails extends Component {
         if(book){
             return(
                 <div>
-                    <h2>{book.id}</h2>
+                    <h2>{book.name}</h2>
                     <p>{book.genre}</p>
                     <p>{book.author.name}</p>
                     <hr />
