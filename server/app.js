@@ -2,12 +2,14 @@ const express = require('express'); //require express server
 const graphqlHTTP = require('express-graphql'); //use to handles graphql request
 const schema = require('./schema/schema'); //get our schema
 const mongoose = require('mongoose'); //get mongodb instance
-
+const cors = require('cors');
  
 const app = express(); //invoke the server function
 
+app.use(cors()); //allow cross origin requests
+
 //connect to mlab database
-mongoose.connect('mongodb://ahmzyjazzy:support123@ds133353.mlab.com:33353/bookstore')
+mongoose.connect('mongodb://ahmzyjazzy:support123@ds133353.mlab.com:33353/bookstore',{useNewUrlParser: true})
 mongoose.connection.once('open', ()=>{
     //confirm connection
     console.log('connected to database');
