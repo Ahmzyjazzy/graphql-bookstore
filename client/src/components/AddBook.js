@@ -14,11 +14,12 @@ class AddBook extends Component {
     }
 
     displayAuthors(){
-        var data = this.props.data;
+        var data = this.props.getAuthorsQuery; //named given
+
         if(data.loading){
             return(<option disabled>Loading Authors</option>);
         }
-        const { authors } = this.props.data; 
+        const { authors } = this.props.getAuthorsQuery; 
         return authors.map(({id,name})=>
             (<option key={id} value={id} > {name} </option>)
         )
@@ -26,7 +27,7 @@ class AddBook extends Component {
 
     onSubmitForm(e){
         e.preventDefault();
-        console.log(this.state);
+        this.props.addBookMutation()
     }
 
   render() {
