@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { getAuthorsQuery, addBookMutation } from '../queries/queries'
 
 class AddBook extends Component {
@@ -59,4 +59,8 @@ class AddBook extends Component {
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+    //binding multiple queries to one component
+    graphql(getAuthorsQuery, {name:"getAuthorsQuery"}),
+    graphql(addBookMutation, {name:"addBookMutation"})
+)(AddBook);
